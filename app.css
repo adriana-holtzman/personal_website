@@ -77,7 +77,7 @@ a:hover {
 }
 
 .menu button.active {
-    color: #ff8e5e;             /* active page highlight */
+    color: #ff3333;             /* active page highlight */
     font-weight: bold;           /* optional, makes it stand out */
 }
 

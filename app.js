@@ -61,4 +61,19 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime(); // initial call
 
+// TRACK CURRENT PAGE
+
+const buttons = document.querySelectorAll(".menu button");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        // Remove 'active' from all buttons
+        buttons.forEach(b => b.classList.remove("active"));
+
+        // Add 'active' to the clicked button
+        btn.classList.add("active");
+    });
+});
+
+
 
