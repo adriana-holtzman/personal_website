@@ -22,7 +22,7 @@ body {
     /* color:#8200d3; */
     padding-top: 30px; /* header height + spacing */
     display: flex;
-    gap: 20px;           /* space between columns */
+    gap: 30px;           /* space between columns */
     align-items: flex-start;
     padding-left: 20px;
 
