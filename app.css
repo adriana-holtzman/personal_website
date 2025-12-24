@@ -1,0 +1,74 @@
+
+@font-face {
+    font-family: "Pang";
+    src: url("fonts/pang.otf") format("opentype");
+}
+
+theme-colors {
+    background-color: #eb0010;
+    background-color: #ff3333;
+    background-color: #c1d267;
+    background-color: #feffc5;
+    background-color: #ff8e5e;
+    background-color: #684312;
+    background-color: #8200d3;
+    background-color: #000fb0;
+}
+
+
+body {
+    /* color:#8200d3; */
+    padding-top: 30px; /* header height + spacing */
+    display: flex;
+    gap: 20px;           /* space between columns */
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.menu {
+    height: max-content;              /* needs a unit */
+    width: 350px;
+    margin: 5px;         /* centers horizontally & adds spacing */
+
+    border-top: 3px solid #ff3333;
+    
+    display: block;            /* ensures stacking */
+
+    box-sizing: border-box;    /* prevents border from breaking width */
+}
+
+.menu img {
+    max-width: 100%;
+}
+
+.footer {
+    height: 200px;              /* needs a unit */
+    
+    display: block;            /* ensures stacking */
+    
+    border-top: 3px solid #ff3333; /* border-width needs style */
+
+    box-sizing: border-box;    /* prevents border from breaking width */
+}
+
+.content {
+    height: max-content;              /* needs a unit */
+    width: 900px;
+    margin: 5px;         /* centers horizontally & adds spacing */
+    right: 100%;
+
+    border-top: 3px solid #c1d267;
+    
+    display: block;            /* ensures stacking */
+
+    box-sizing: border-box;    /* prevents border from breaking width */
+}
+
+.content img {
+    max-width: 100%;
+}
+
