@@ -1,5 +1,7 @@
 const content = document.getElementById("content");
 
+// SELECT CONTENT USING MENU
+
 document.querySelectorAll(".menu button").forEach(button => {
     button.addEventListener("click", async () => {
         const page = button.dataset.page;
@@ -11,8 +13,10 @@ document.querySelectorAll(".menu button").forEach(button => {
     });
 });
 
-const username = "YOUR_LASTFM_USERNAME";
-const apiKey = "YOUR_API_KEY";
+// DISPLAY LASTFM
+
+const username = "evilcat923";
+const apiKey = "0d358011f511af9c7a3f5438631adfa3";
 
 const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
 
@@ -25,15 +29,36 @@ fetch(url)
 
     // Detect if it’s currently playing
     const nowPlayingText = track["@attr"]?.nowplaying 
-        ? `Now playing: ${name} — ${artist}`
-        : `Last played: ${name} — ${artist}`;
-        
+        ? `listening to ${name} by ${artist}`
+        : `last listened to ${name} by ${artist}`;
+
     document.getElementById("now-playing").textContent = nowPlayingText;
 })
 
 .catch(err => {
     console.error(err);
-    document.getElementById("now-playing").textContent = "Could not load track";
+    document.getElementById("now-playing").textContent = "listening to: [could not load track]";
 });
+
+// DISPLAY CURRENT TIME
+
+const timeElement = document.getElementById("time");
+
+function updateTime() {
+    const options = {
+        timeZone: "America/New_York", // IANA naming
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true // true = 12-hour format, false = 24-hour
+    };
+    
+    const timeString = new Date().toLocaleTimeString("en-US", options);
+    timeElement.textContent = `current time: ${timeString} (EST)`;
+}
+
+// Update every second
+setInterval(updateTime, 1000);
+updateTime(); // initial call
 
 
