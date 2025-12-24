@@ -49,7 +49,7 @@ a:hover {
     width: 350px;
     margin: 5px;         /* centers horizontally & adds spacing */
 
-    border-top: 3px solid #ff3333;
+    /* border-top: 3px solid #ff3333; */
     
     display: block;            /* ensures stacking */
 
@@ -84,10 +84,12 @@ a:hover {
 
 .footer {
     height: 200px;              /* needs a unit */
+
+    margin-top: 20px;
     
     display: block;            /* ensures stacking */
     
-    border-top: 3px solid #ff3333; /* border-width needs style */
+    border-top: 3px dotted #ff3333; 
 
     box-sizing: border-box;    /* prevents border from breaking width */
 }
@@ -98,7 +100,7 @@ a:hover {
     margin: 5px;         /* centers horizontally & adds spacing */
     right: 100%;
 
-    border-top: 3px solid #c1d267;
+    /* border-top: 3px solid #c1d267; */
     
     display: block;            /* ensures stacking */
 
@@ -112,7 +114,7 @@ a:hover {
 .blog_post {
     height: max-content;   
     padding-top: 10px;
-    border-top: 3px solid #c1d267;
+    border-top: 3px dotted #fa6bbc;
     display: block;            /* ensures stacking */
     box-sizing: border-box;    /* prevents border from breaking width */
 }
