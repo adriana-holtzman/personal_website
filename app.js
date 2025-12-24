@@ -54,7 +54,7 @@ function updateTime() {
     };
     
     const timeString = new Date().toLocaleTimeString("en-US", options);
-    timeElement.textContent = `current time: ${timeString} (EST)`;
+    timeElement.textContent = `current time ${timeString} (EST)`;
 }
 
 // Update every second

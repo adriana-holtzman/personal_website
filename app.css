@@ -4,14 +4,16 @@
     src: url("fonts/pang.otf") format("opentype");
 }
 
+@font-face {
+    font-family: "Absans";
+    src: url("fonts/absans-main/fonts/Absans-Regular.otf") format("opentype");
+}
+
 theme-colors {
-    background-color: #eb0010;
+    background-color: #fa6bbc;
     background-color: #ff3333;
     background-color: #c1d267;
     background-color: #feffc5;
-    background-color: #ff8e5e;
-    background-color: #684312;
-    background-color: #8200d3;
     background-color: #000fb0;
 }
 
@@ -23,10 +25,23 @@ body {
     gap: 20px;           /* space between columns */
     align-items: flex-start;
     padding-left: 20px;
+
+    font-family: "Absans";
 }
 
 h1 {
     font-size: 40px;
+}
+
+a {
+    color: #000fb0;             /* normal text color */
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fa6bbc;
 }
 
 .menu {
@@ -44,6 +59,28 @@ h1 {
 .menu img {
     max-width: 100%;
 }
+
+.menu button {
+    background: none;           /* remove default button look */
+    border: none;
+    padding: 0;
+    margin: 5px 0;
+    font-family: "Absans"; /* your custom font */
+    font-size: 16px;
+    color: #000fb0;             /* normal text color */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.menu button:hover {
+    color: #fa6bbc;             /* color on hover */
+}
+
+.menu button.active {
+    color: #ff8e5e;             /* active page highlight */
+    font-weight: bold;           /* optional, makes it stand out */
+}
+
 
 .footer {
     height: 200px;              /* needs a unit */
