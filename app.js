@@ -10,8 +10,39 @@ document.querySelectorAll(".menu button").forEach(button => {
         const html = await response.text();
 
         content.innerHTML = html;
+
+        // --- NEW: Initialize map if map container exists ---
+        const mapDiv = document.getElementById("map");
+        if (mapDiv) {
+            const map = L.map('map').setView([20, 0], 2);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            const landmarks = [
+                { city: "New York", coords: [40.7128, -74.0060], description: ""},
+                { city: "London", coords: [51.5074, -0.1278], description: "" },
+                { city: "Boston", coords: [48.8566, 2.3522], description: "" },
+                { city: "Pittsburgh", coords: [35.6895, 139.6917], description: "" },
+            ];
+
+            const icon_image = L.icon({
+                iconUrl: 'img/cheese_cursor.png', // your icon image
+                iconSize: [32, 32],
+                iconAnchor: [16, 32], // tip of the marker
+                popupAnchor: [0, -32]
+            });
+
+            landmarks.forEach(l => {
+                L.marker(l.coords, { icon: icon_image })
+                 .addTo(map)
+                 .bindPopup(`<b>${l.city}</b><br>${l.description}`);
+            });
+        }
     });
 });
+
 
 // DISPLAY LASTFM
 
@@ -74,6 +105,9 @@ buttons.forEach(btn => {
         btn.classList.add("active");
     });
 });
+
+
+  
 
 
 

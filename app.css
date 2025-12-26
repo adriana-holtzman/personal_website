@@ -10,23 +10,32 @@
 }
 
 theme-colors {
-    background-color: #fa6bbc;
-    background-color: #ff3333;
+    background-color: #de2572;
+    /* background-color: #ff3333; */
     background-color: #c1d267;
-    background-color: #feffc5;
+    background-color: #ffcf37;
+    background-color: #ffd0376c;
     background-color: #000fb0;
 }
 
+html {
+    height: 100%;
+}
 
 body {
-    /* color:#8200d3; */
-    padding-top: 30px; /* header height + spacing */
     display: flex;
-    gap: 30px;           /* space between columns */
+    gap: 10px;           /* space between columns */
     align-items: flex-start;
-    padding-left: 20px;
+
+    height: 100%;
+    overflow: hidden;
 
     font-family: "Absans";
+    background-color: #ffe079b1;
+    /* background-image: url("img/water.jpeg");
+    background-size: cover;     
+    background-position: center; 
+    background-repeat: no-repeat;  */
 }
 
 h1 {
@@ -41,63 +50,81 @@ a {
 }
 
 a:hover {
-    color: #fa6bbc;
+    color: #de2572;
 }
 
 .menu {
-    height: max-content;              /* needs a unit */
-    width: 350px;
-    margin: 5px;         /* centers horizontally & adds spacing */
+    height: 100%;              /* needs a unit */
+    width: 300px;
+    padding: 20px;         /* centers horizontally & adds spacing */
 
     /* border-top: 3px solid #ff3333; */
     
     display: block;            /* ensures stacking */
 
     box-sizing: border-box;    /* prevents border from breaking width */
+
+    overflow-y: auto;
+
+    background-image: url("img/textile_cats.jpeg");
+    background-size: cover;      /* fill screen */
+    background-position: center; /* center image */
+    background-repeat: no-repeat;
 }
 
 .menu img {
     max-width: 100%;
 }
 
+.menu_header {
+    padding-bottom: 30px;
+}
+
+.menu_content {
+    background-color: #ffe079b1;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .menu button {
-    background: none;           /* remove default button look */
+    background: #ffcf37;   
     border: none;
-    padding: 0;
-    margin: 5px 0;
+    border-radius: 25px;
+    padding: 5px;
+    padding-inline: 10px;
+    margin: 2px;
     font-family: "Absans"; /* your custom font */
-    font-size: 16px;
+    font-size: 20px;
     color: #000fb0;             /* normal text color */
     cursor: pointer;
     transition: color 0.2s;
 }
 
 .menu button:hover {
-    color: #fa6bbc;             /* color on hover */
+    color: #de2572;             /* color on hover */
 }
 
 .menu button.active {
-    color: #ff3333;             /* active page highlight */
+    color: #de2572;             /* active page highlight */
     font-weight: bold;           /* optional, makes it stand out */
 }
 
 
 .footer {
-    height: 200px;              /* needs a unit */
-
     margin-top: 20px;
     
     display: block;            /* ensures stacking */
     
-    border-top: 3px dotted #ff3333; 
+    border-top: 3px dotted #ffcf37; 
 
     box-sizing: border-box;    /* prevents border from breaking width */
 }
 
 .content {
-    height: max-content;              /* needs a unit */
-    width: 900px;
-    margin: 5px;         /* centers horizontally & adds spacing */
+    height: 100%;              /* needs a unit */
+    width: 1000px;
+    padding: 20px;    
     right: 100%;
 
     /* border-top: 3px solid #c1d267; */
@@ -105,6 +132,9 @@ a:hover {
     display: block;            /* ensures stacking */
 
     box-sizing: border-box;    /* prevents border from breaking width */
+
+    overflow-y: auto;
+
 }
 
 .content img {
@@ -114,8 +144,55 @@ a:hover {
 .blog_post {
     height: max-content;   
     padding-top: 10px;
-    border-top: 3px dotted #fa6bbc;
+    border-top: 3px dotted #de2572;
     display: block;            /* ensures stacking */
     box-sizing: border-box;    /* prevents border from breaking width */
 }
 
+/* CHART FOR MEDIA CONSUMPTION */
+.info-chart {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Absans";
+}
+
+.info-chart th,
+.info-chart td {
+  /* border: 2px solid #000fb0; */
+  padding: 8px;
+  vertical-align: top;
+  min-width: 100px;
+}
+
+.info-chart th {
+  /* background: #feffc5; */
+  text-align: left;
+}
+
+.info-chart img {
+  max-width: 200px;
+}
+
+.info-chart p {
+    margin: 0;
+}
+
+/* MAP */
+#map {
+    height: 500px;           
+    width: 100%;
+}
+
+  
+.leaflet-popup-content-wrapper {
+    background: #feffc5;
+    color: #000fb0;
+    font-family: "Absans";
+    font-size: 14px;
+    border-radius: 8px;
+}
+  
+.leaflet-popup-tip {
+    background: #feffc5;
+}
+  

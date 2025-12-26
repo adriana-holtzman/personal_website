@@ -7,35 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="app.css" rel="stylesheet">
     <link href="img/cow.jpeg" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 </head>
 
 <body>
     <!--START LEFT COLUMN: MENU, NOW, CREDIT, FOOTER-->
     <div class="menu">
-        <img src="img/adriana.png" alt="adriana">
+        <div class="menu_header">
+            <a href="index.html"><img src="img/blur_subject.png" alt="adriana"></a>
+        </div>
         
-        <p>choose content from the menu below</p>
+        <button data-page="blog">blog</button>
+        <button data-page="goals">goals</button>
+        <button data-page="places">places</button>
+        <button data-page="media_consumed">media</button>
 
-        <h3>menu</h3>
-        <ul>
-            <li><button data-page="blog">blog</button></li>
-            <li><button data-page="goals">goals</button></li>
-            <li><button data-page="places">places</button></li>
-            <li><button data-page="media_consumed">media consumed</button></li>
-            <!--li><button data-page="media_created">media created</button></li-->
-        </ul>
+        <!-- <div class="menu_content">
+            
+            <h3>now</h3>
+            <ul>
+                <li><p id="now-playing">listening to: [loading...]</p></li>
+                <li><p id="time"></p></li>
+            </ul>
 
-        <h3>now</h3>
-        <ul>
-            <li><p id="now-playing">listening to: [loading...]</p></li>
-            <li><p id="time"></p></li>
-        </ul>
-
-        <h3>credit</h3>
-        <ul>
-            <li><a href="https://typedither.vercel.app/">type dither</a></li>
-        </ul>
+            <h3>credit</h3>
+            <ul>
+                <li><a href="https://typedither.vercel.app/">type dither</a></li>
+            </ul>
+        </div> -->
 
         <div class="footer">
             <p>made by adriana</p>
@@ -45,12 +45,24 @@
 
     <!--START RIGHT COLUMN: CONTENT-->
     <div class="content" id="content">
-        
+        <h3>inventory</h3>
+        <img src="img/miffy.png"        style="width:55px" alt="miffy">
+        <img src="img/sonny_cherry.PNG" style="width:55px" alt="cherry sonny angel">
+        <img src="img/sonny_mouse.PNG"  style="width:55px" alt="mouse sonny angel">
+
+        <h3>now</h3>
+            <p id="now-playing">listening to: [loading...]</p>
+            <p id="time"></p>
+
+            <h3>credit</h3>
+            <ul>
+                <li><a href="https://typedither.vercel.app/">type dither</a></li>
+            </ul>
     </div>
 
 
 </body>
 
-
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="app.js"></script>
 
