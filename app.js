@@ -107,6 +107,44 @@ buttons.forEach(btn => {
 });
 
 
+// CURSOR FOLLOWER
+
+const follower = document.getElementById("cursor-follower");
+
+// mouse position
+let mouseX = 0;
+let mouseY = 0;
+
+// follower position
+let followerX = 0;
+let followerY = 0;
+
+const offsetX = 20;
+const offsetY = 20;
+
+// how fast it catches up (lower = slower, higher = snappier)
+const speed = 0.08;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateFollower() {
+  // smooth interpolation (lerp)
+  followerX += (mouseX - followerX) * speed;
+  followerY += (mouseY - followerY) * speed;
+
+  follower.style.transform =
+  `translate(${followerX + offsetX}px, ${followerY + offsetY}px)`;
+
+  requestAnimationFrame(animateFollower);
+}
+
+animateFollower();
+
+
+
   
 
 
