@@ -187,14 +187,14 @@ label {
 }
   
 .blog-figure img {
-    max-height:600px;
+    max-height:500px;
     max-width: 100%;
     width: auto;
     border-radius: 8px;
 }
 
 .blog-post video {
-    max-height: 600px; /* max height */
+    max-height: 500px; /* max height */
     max-width: 100%;   /* responsive */
     width: auto;       /* preserve aspect ratio */
     display: block;    /* remove inline spacing */
