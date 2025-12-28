@@ -1,20 +1,19 @@
 const content = document.getElementById("content");
 
-// SELECT CONTENT USING MENU
+import { posts } from "./blog/posts.js";
 
-document.querySelectorAll(".menu button").forEach(button => {
-    button.addEventListener("click", async () => {
-        const page = button.dataset.page;
+// LOAD PAGE FUNCTION ------------------------------------------
 
-        const response = await fetch(`pages/${page}.html`);
-        const html = await response.text();
+async function loadPage(page) {
+    const response = await fetch(`pages/${page}.html`);
+    const html = await response.text();
+    content.innerHTML = html;
+  
+    // LOAD BLOG IF BLOG --------------------------------------------------
+    if (page === "blog") loadBlogList();
 
-        content.innerHTML = html;
-
-        // LOAD BLOG IF BLOG
-        if (page === "blog") loadBlogList();
-
-        // IF MAP Initialize map if map container exists ---
+    // INIT MAP IF MAP ----------------------------------------------------
+    else if (page === "places") {
         const mapDiv = document.getElementById("map");
         if (mapDiv) {
             const map = L.map('map').setView([20, 0], 2);
@@ -43,11 +42,26 @@ document.querySelectorAll(".menu button").forEach(button => {
                  .bindPopup(`<b>${l.city}</b><br>${l.description}`);
             });
         }
+    }
+}  
+
+// SELECT CONTENT USING MENU -----------------------------------------
+
+document.querySelectorAll(".menu button").forEach(button => {
+    button.addEventListener("click", async () => {
+        const page = button.dataset.page;
+
+        const response = await fetch(`pages/${page}.html`);
+        const html = await response.text();
+
+        content.innerHTML = html;
+
+        loadPage(page);
     });
 });
 
 
-// DISPLAY LASTFM
+// DISPLAY LASTFM -------------------------------------------------
 
 const username = "evilcat923";
 const apiKey = "0d358011f511af9c7a3f5438631adfa3";
@@ -74,7 +88,7 @@ fetch(url)
     document.getElementById("now-playing").textContent = "listening to: [could not load track]";
 });
 
-// DISPLAY CURRENT TIME
+// DISPLAY CURRENT TIME ---------------------------------------------------------
 
 const timeElement = document.getElementById("time");
 
@@ -95,7 +109,7 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime(); // initial call
 
-// TRACK CURRENT PAGE
+// TRACK CURRENT PAGE --------------------------------------------------
 
 const buttons = document.querySelectorAll(".menu button");
 
@@ -110,7 +124,7 @@ buttons.forEach(btn => {
 });
 
 
-// CURSOR FOLLOWER
+// CURSOR FOLLOWER ---------------------------------------------------------
 
 const follower = document.getElementById("cursor-follower");
 
@@ -147,7 +161,7 @@ function animateFollower() {
 animateFollower();
 
 
-// LOAD BLOG
+// LOAD BLOG ---------------------------------------------------------
 
 async function loadBlogList() {
     const res = await fetch("blog/posts.json");
@@ -173,6 +187,7 @@ async function loadPost(id) {
     if (!post) return;
   
     content.innerHTML = `
+        <button class="back-button" onclick="loadPage('blog')">← Back</button>
         <article class="blog-post">
             <h3>${post.title}</h3>
             <small>${post.date}</small>

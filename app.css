@@ -39,10 +39,19 @@ h1 {
     font-size: 40px;
 }
 
-a {
+a, button {
+    font-family: "Absans";
     color: #000fb0;             /* normal text color */
     transition: color 0.2s;
     text-decoration: none;
+    background: none;
+    border: none;
+    margin: 0;
+    font-size: 16px;
+}
+
+a:hover, button:hover {
+    color: #de2572;             /* color on hover */
 }
 
 a,
@@ -59,9 +68,9 @@ label {
 }
 
 
-a:hover {
+/* a:hover {
     color: #de2572;
-}
+} */
 
 .menu {
     height: 100%;              /* needs a unit */
@@ -104,14 +113,7 @@ a:hover {
     padding: 5px;
     padding-inline: 10px;
     margin: 2px;
-    font-family: "Absans"; /* your custom font */
     font-size: 20px;
-    color: #000fb0;             /* normal text color */
-    transition: color 0.2s;
-}
-
-.menu button:hover {
-    color: #de2572;             /* color on hover */
 }
 
 .menu button.active {
@@ -156,17 +158,12 @@ a:hover {
     max-width: 100%;
 }
 
-/* .blog_post {
-    height: max-content;   
-    padding-top: 10px;
-    border-top: 3px dotted #de2572;
-    display: block;            
-    box-sizing: border-box;  
-} */
+/* ******************* BLOG ******************* */
 
 .blog-post {
     max-width: 700px;
     line-height: 1.6;
+    counter-reset: figure;
 }
 
 .blog-header {
@@ -180,19 +177,33 @@ a:hover {
     margin-block: -10px;
 }
   
-.blog-preview button {
-    background: none;
-    border: none;
-    margin: 0;
-    color: #000fb0;
-    font-family: "Absans"; 
-    font-size: 16px;
-    transition: color 0.2s;
-}
+/* .blog-preview button { 
+} */
 
-.blog-preview button:hover {
-    color: #de2572;
+.blog-figure {
+    margin: 30px 0;
+    text-align: center;
+    counter-increment: figure;
 }
+  
+.blog-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+  
+.blog-figure figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    font-style: italic;
+}
+  
+.blog-figure figcaption::before {
+    content: "Figure " counter(figure) ": ";
+    font-weight: bold;
+}
+  
+  
   
 
 /* CHART FOR MEDIA CONSUMPTION */

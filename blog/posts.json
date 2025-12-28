@@ -1,10 +1,11 @@
 [
     {
-        "id": "test-post-2",
-        "title": "Maps & the Web",
-        "date": "2025-01-15",
-        "excerpt": "Playing with interactive maps.",
-        "content": "<p>Leaflet is fun.</p>"
+        "id": "with-images",
+        "title": "A Post With Images",
+        "date": "2025-01-22",
+        "excerpt": "Testing image captions.",
+        "content": "<p>This is some text before the image.</p><figure class=\"blog-figure\"><img src=\"img/blur.png\" alt=\"A simple map\"><figcaption>A very simple map marking cities.</figcaption></figure><p>This is text after the image.</p>"
+          
     },
     {
         "id": "first-post",
