@@ -204,6 +204,7 @@ async function loadPost(filename) {
       <article class="blog-post">
         ${html}
       </article>
+      <div class="signature">♡ adriana</div>
     `;
 }
   

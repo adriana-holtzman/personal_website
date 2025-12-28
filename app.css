@@ -212,8 +212,10 @@ label {
     font-weight: bold;
 }
   
-  
-  
+.signature {
+    margin-block: 30px;
+    color: #de2572;
+}
 
 /* CHART FOR MEDIA CONSUMPTION */
 .info-chart {
