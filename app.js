@@ -11,7 +11,10 @@ document.querySelectorAll(".menu button").forEach(button => {
 
         content.innerHTML = html;
 
-        // --- NEW: Initialize map if map container exists ---
+        // LOAD BLOG IF BLOG
+        if (page === "blog") loadBlogList();
+
+        // IF MAP Initialize map if map container exists ---
         const mapDiv = document.getElementById("map");
         if (mapDiv) {
             const map = L.map('map').setView([20, 0], 2);
@@ -144,8 +147,39 @@ function animateFollower() {
 animateFollower();
 
 
+// LOAD BLOG
 
+async function loadBlogList() {
+    const res = await fetch("blog/posts.json");
+    const posts = await res.json();
   
-
+    const list = document.getElementById("blog-list");
+    if (!list) return;
+  
+    list.innerHTML = posts.map(post => `
+        <div class="blog-preview">
+            <p>${post.date}
+            <button onclick="loadPost('${post.id}')">${post.title}</button></p>
+        </div>
+    `).join("");
+}
+  
+  
+async function loadPost(id) {
+    const res = await fetch("blog/posts.json");
+    const posts = await res.json();
+  
+    const post = posts.find(p => p.id === id);
+    if (!post) return;
+  
+    content.innerHTML = `
+        <article class="blog-post">
+            <h3>${post.title}</h3>
+            <small>${post.date}</small>
+            ${post.content}
+        </article>
+    `;
+}
+  
 
 

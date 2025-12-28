@@ -156,13 +156,44 @@ a:hover {
     max-width: 100%;
 }
 
-.blog_post {
+/* .blog_post {
     height: max-content;   
     padding-top: 10px;
     border-top: 3px dotted #de2572;
-    display: block;            /* ensures stacking */
-    box-sizing: border-box;    /* prevents border from breaking width */
+    display: block;            
+    box-sizing: border-box;  
+} */
+
+.blog-post {
+    max-width: 700px;
+    line-height: 1.6;
 }
+
+.blog-header {
+    border-bottom: 2px dotted #de2572;
+    padding-bottom: 0px;
+    margin-bottom: 30px;
+}
+  
+.blog-preview {
+    padding: 0px;
+    margin-block: -10px;
+}
+  
+.blog-preview button {
+    background: none;
+    border: none;
+    margin: 0;
+    color: #000fb0;
+    font-family: "Absans"; 
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.blog-preview button:hover {
+    color: #de2572;
+}
+  
 
 /* CHART FOR MEDIA CONSUMPTION */
 .info-chart {
