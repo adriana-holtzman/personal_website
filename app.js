@@ -1,7 +1,5 @@
 const content = document.getElementById("content");
 
-import { posts } from "./blog/posts.js";
-
 // LOAD PAGE FUNCTION ------------------------------------------
 
 async function loadPage(page) {
