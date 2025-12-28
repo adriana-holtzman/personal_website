@@ -1,0 +1,17 @@
+[
+    {
+        "id": "test-post-2",
+        "title": "Maps & the Web",
+        "date": "2025-01-15",
+        "excerpt": "Playing with interactive maps.",
+        "content": "<p>Leaflet is fun.</p>"
+    },
+    {
+        "id": "first-post",
+        "title": "blog post #1",
+        "date": "2025-12-23",
+        "excerpt": "Thoughts on making my own website.",
+        "content": "<p>Hello! This is a blog post. It is winter break and I am making this website. My goals for the break are to prepare for the spring semester (travel plans, academics) and to rest. Currently it is 8:50pm and I am hungry. These days I spend a lot of time on Duolingo learning French. Bye bye!</p>"
+    }
+]
+  
