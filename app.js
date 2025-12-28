@@ -161,6 +161,12 @@ animateFollower();
 
 // LOAD BLOG ---------------------------------------------------------
 
+function extractTitleFromMarkdown(md) {
+    const match = md.match(/^\s*#\s+(.*)/m);
+    if (match) return match[1].trim();
+    return "Untitled Post"; // fallback
+}  
+
 async function loadBlogList() {
     const res = await fetch("blog/posts.json");
     const posts = await res.json();
@@ -168,31 +174,68 @@ async function loadBlogList() {
     const list = document.getElementById("blog-list");
     if (!list) return;
   
-    list.innerHTML = posts.map(post => `
+    list.innerHTML = "";
+  
+    for (const post of posts) {
+        const mdRes = await fetch(`blog/${post.id}.md`);
+        const md = await mdRes.text();
+        
+        // extract title (first # heading)
+        const title = extractTitleFromMarkdown(md);
+        
+        // extract first paragraph as excerpt
+        // const excerptMatch = md
+        //     .replace(/^#.*$/m, "")          // remove title
+        //     .match(/\n\n([^#\n][\s\S]*?)\n\n/);
+        
+        // const excerpt = excerptMatch
+        //     ? excerptMatch[1].trim()
+        //     : "";
+        
+        // const id = post.file.replace(".md", "");
+  
+        list.innerHTML += `
         <div class="blog-preview">
             <p>${post.date}
-            <button onclick="loadPost('${post.id}')">${post.title}</button></p>
+            <button onclick="loadPost('${post.id}')">${title}</button></p>
         </div>
-    `).join("");
+        `;
+    }
 }
   
   
-async function loadPost(id) {
-    const res = await fetch("blog/posts.json");
-    const posts = await res.json();
   
-    const post = posts.find(p => p.id === id);
-    if (!post) return;
+// async function loadPost(id) {
+//     const res = await fetch("blog/posts.json");
+//     const posts = await res.json();
+  
+//     const post = posts.find(p => p.id === id);
+//     if (!post) return;
+  
+//     content.innerHTML = `
+//         <button class="back-button" onclick="loadPage('blog')">← Back</button>
+//         <article class="blog-post">
+//             <h3>${post.title}</h3>
+//             <small>${post.date}</small>
+//             ${post.content}
+//         </article>
+//     `;
+// }
+
+async function loadPost(filename) {
+    const res = await fetch(`blog/${filename}.md`);
+    const md = await res.text();
+  
+    const html = marked.parse(md);
   
     content.innerHTML = `
-        <button class="back-button" onclick="loadPage('blog')">← Back</button>
-        <article class="blog-post">
-            <h3>${post.title}</h3>
-            <small>${post.date}</small>
-            ${post.content}
-        </article>
+      <button onclick="loadPage('blog')">← Back</button>
+      <article class="blog-post">
+        ${html}
+      </article>
     `;
 }
+  
   
 
 

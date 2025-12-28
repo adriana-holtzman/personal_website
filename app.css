@@ -161,7 +161,7 @@ label {
 /* ******************* BLOG ******************* */
 
 .blog-post {
-    max-width: 700px;
+    max-width: 100%;
     line-height: 1.6;
     counter-reset: figure;
 }
@@ -187,10 +187,19 @@ label {
 }
   
 .blog-figure img {
+    max-height:600px;
     max-width: 100%;
-    height: auto;
+    width: auto;
     border-radius: 8px;
 }
+
+.blog-post video {
+    max-height: 600px; /* max height */
+    max-width: 100%;   /* responsive */
+    width: auto;       /* preserve aspect ratio */
+    display: block;    /* remove inline spacing */
+    margin: 0 auto;    /* center if needed */
+}  
   
 .blog-figure figcaption {
     margin-top: 8px;
