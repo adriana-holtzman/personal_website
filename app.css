@@ -109,11 +109,11 @@ label {
 .menu button {
     background: #ffcf37;   
     border: none;
-    border-radius: 25px;
-    padding: 5px;
-    padding-inline: 10px;
+    border-radius: 20px;
+    padding: 3px;
+    padding-inline: 15px;
     margin: 2px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .menu button.active {
@@ -226,7 +226,9 @@ label {
 
 .info-chart th,
 .info-chart td {
-  /* border: 2px solid #000fb0; */
+  border: 2px solid #000fb0;
+  border-left: 0px solid #000fb0;
+  border-right: 0px solid #000fb0;
   padding: 8px;
   vertical-align: top;
   min-width: 100px;
