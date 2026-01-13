@@ -1,3 +1,6 @@
+/* *********************************************************
+**** FONTS + COLORS
+********************************************************** */
 
 @font-face {
     font-family: "Pang";
@@ -9,30 +12,30 @@
     src: url("fonts/absans-main/fonts/Absans-Regular.otf") format("opentype");
 }
 
-theme-colors {
+/* theme-colors {
     background-color: #de2572;
-    /* background-color: #ff3333; */
+    background-color: #ff3333;
     background-color: #c1d267;
     background-color: #ffcf37;
     background-color: #ffd0376c;
-    background-color: #000fb0;
-}
+    background-color: #000fb0; 
+} */
+
+/* *********************************************************
+**** GENERAL BODY + TEXT STYLING
+********************************************************** */
 
 html {
     height: 100%;
 }
 
 body {
-    display: flex;
-    /* gap: 10px;           */
-    align-items: flex-start;
 
     height: 100%;
     overflow: hidden;
 
     font-family: "Absans";
-    background-color: #ffe079b1;
-    cursor: url("img/cheese.cur") 0 0, auto;
+    background-color: #ffdbfd;
 }
 
 h1 {
@@ -41,19 +44,24 @@ h1 {
 
 a, button {
     font-family: "Absans";
-    color: #000fb0;             /* normal text color */
+    color: #3b00b0;       
     transition: color 0.2s;
     text-decoration: none;
     background: none;
     border: none;
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 a:hover, button:hover {
-    color: #de2572;             /* color on hover */
+    color: #de2572;   
 }
 
+/* *********************************************************
+**** CURSOR + FOLLOWER MOUSE
+********************************************************** */
+
+body, 
 a,
 a:hover,
 a:active,
@@ -67,88 +75,147 @@ label {
     cursor: url("img/cheese.cur") 0 0, auto;
 }
 
+#cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;   /* size of follower */
+    height: auto;
+    pointer-events: none; /* VERY IMPORTANT */
+    z-index: 9999;
+}
+  
+/* *********************************************************
+**** HIGHLIGHT COLOR 
+********************************************************** */
 
-/* a:hover {
-    color: #de2572;
+/* ::selection {
+    background: #de25726b;
+}
+
+::-moz-selection {
+    background: #de25726b;
 } */
 
+/* *********************************************************
+**** TICKER 
+********************************************************** */
+
+.ticker-wrap {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 35px;
+    background: #ffb963;
+    overflow: hidden;
+    z-index: 9999;
+    left: 0;
+}
+  
+.ticker {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+    animation: scroll 15s linear infinite;
+}
+  
+.ticker span {
+    padding-right: 100px;
+}
+  
+/* Animation */
+@keyframes scroll {
+    0% {
+      transform: translateX(160%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+}
+
+/* *********************************************************
+**** MENU
+********************************************************** */
+
 .menu {
-    height: 100%;              /* needs a unit */
-    width: 300px;
-    padding: 20px;         /* centers horizontally & adds spacing */
+    position: fixed;
+    width: 100%;           
+    height: 35px;
+    top: 35px;    
+    left:0;
 
-    /* border-top: 3px solid #ff3333; */
-    
-    display: block;            /* ensures stacking */
+    /* display: block;            */
+    /* box-sizing: border-box;    */
+    /* overflow: hidden; */
 
-    box-sizing: border-box;    /* prevents border from breaking width */
-
-    overflow-y: auto;
-
-    background-image: url("img/textile_cats.jpeg");
-    background-size: cover;      /* fill screen */
-    background-position: center; /* center image */
-    background-repeat: no-repeat;
+    /* background-color: #000fb0; */
 }
 
 .menu img {
+    max-height: 35px;
     max-width: 100%;
-}
-
-.menu_header {
-    padding-bottom: 30px;
-}
-
-.menu_content {
-    background-color: #ffe079b1;
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: auto;
 }
 
 .menu button {
     background: #ffcf37;   
     border: none;
     border-radius: 20px;
-    padding: 3px;
-    padding-inline: 15px;
-    margin: 2px;
-    font-size: 18px;
+    padding-block: 3px;
+    /* padding-inline: 15px; */
+    margin-block: 2px;
+    width: 24.8%;
+    /* font-size: 18px; */
 }
 
 .menu button.active {
-    color: #de2572;             /* active page highlight */
+    background-color: #de2572;  
+    color: #ffcf37;
     font-weight: bold;           /* optional, makes it stand out */
 }
 
-
-.footer {
-    margin-top: 20px;
-
-    border-top: 3px dotted #ffcf37; 
-    color:#ffcf37;
-    font:bold;
-    
-    display: block;            /* ensures stacking */
-    box-sizing: border-box;    /* prevents border from breaking width */
-}
-
-.trim {
+/* .trim {
     width: 30px;
     height: 100%;
     background-image: url("img/lace_trim.png");
     background-size:contain;     
     background-position: center; 
     background-repeat: repeat-y; 
+} */
+
+/* *********************************************************
+**** FOOTER
+********************************************************** */
+
+.footer {
+    margin-top: 20px;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    overflow: hidden;
 }
+
+.footer img {
+    max-height: 100px;
+    max-width: 55px;
+    width: auto;
+}
+
+/* *********************************************************
+**** CONTENT
+********************************************************** */
 
 .content {
     height: 100%;              /* needs a unit */
-    width: 1000px;
-    padding: 20px;    
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 110px;
+    padding-inline: 50px;
     
-    display: block;            /* ensures stacking */
-    box-sizing: border-box;    /* prevents border from breaking width */
+    /* display: block;           */
+    /* box-sizing: border-box;  */
 
     overflow-y: auto;
 
@@ -158,7 +225,10 @@ label {
     max-width: 100%;
 }
 
-/* ******************* BLOG ******************* */
+
+/* *********************************************************
+**** BLOG
+********************************************************** */
 
 .blog-post {
     max-width: 100%;
@@ -176,9 +246,6 @@ label {
     padding: 0px;
     margin-block: -10px;
 }
-  
-/* .blog-preview button { 
-} */
 
 .blog-figure {
     margin: 30px 0;
@@ -217,7 +284,10 @@ label {
     color: #de2572;
 }
 
-/* CHART FOR MEDIA CONSUMPTION */
+/* *********************************************************
+**** CHART FOR MEDIA CONSUMPTION
+********************************************************** */
+
 .info-chart {
   width: 100%;
   border-collapse: collapse;
@@ -247,8 +317,12 @@ label {
     margin: 0;
 }
 
-/* MAP */
-#map {
+
+/* *********************************************************
+**** LEAFLET MAP
+********************************************************** */
+
+/* #map {
     height: 500px;           
     width: 100%;
 }
@@ -264,26 +338,4 @@ label {
   
 .leaflet-popup-tip {
     background: #feffc5;
-}
-
-/* CURSOR FOLLOWER (MOUSE) */
-#cursor-follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 30px;   /* size of follower */
-    height: auto;
-    pointer-events: none; /* VERY IMPORTANT */
-    z-index: 9999;
-  }
-  
-/* HIGHLIGHTED SELECTION COLOR */
-::selection {
-    background: #de25726b;
-    /* color: #de2572;     */
-}
-
-::-moz-selection {
-    background: #de25726b;
-    /* color: #de2572;     */
-}
+} */

@@ -13,48 +13,51 @@
 
 <body>
     <img id="cursor-follower" src="img/sam_mouse.png" alt="">
-    <!--START LEFT COLUMN: MENU, NOW, CREDIT, FOOTER-->
-    <div class="menu">
-        <div class="menu_header">
-            <a href="index.html"><img src="img/blur_subject.png" alt="adriana"></a>
-        </div>
-        
-        <button data-page="blog">BLOG</button>
-        <button data-page="goals">GOALS</button>
-        <button data-page="places">PLACES</button>
-        <button data-page="media_consumed">CONSUMED</button>
-        <button data-page="media_created">CREATED</button>
 
-        <div class="footer">
-            <p>made by adriana in 2025</p>
+    <!-- *************************************************************************
+    ***** TOP BAR
+    *************************************************************************** -->
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span><p id="now-playing">listening to: [loading...]</p></span>
+            <span><p id="time"></p></span>
         </div>
     </div>
-    <!--END LEFT COLUMN: MENU, NOW, CREDIT, FOOTER-->
 
-    <div class="trim"></div>
+    <div class="menu">
+        <button><a href="index.html">adriana</a></button>
+        <button data-page="blog">blog</button>
+        <!-- <button data-page="goals">goals</button> -->
+        <!-- <button data-page="places">places</button> -->
+        <button data-page="media_consumed">consumed</button>
+        <button data-page="media_created">created</button>
+
+    </div>
 
     <!--START RIGHT COLUMN: CONTENT-->
     <div class="content" id="content">
-        <h3>inventory</h3>
-        <img src="img/miffy.png"        style="width:55px" alt="miffy">
-        <img src="img/sonny_cherry.PNG" style="width:55px" alt="cherry sonny angel">
-        <img src="img/sonny_mouse.PNG"  style="width:55px" alt="mouse sonny angel">
 
         <h3>now</h3>
-            <p id="now-playing">listening to: [loading...]</p>
-            <p id="time"></p>
+            <!-- <p id="now-playing">listening to: [loading...]</p> -->
+            <!-- <p id="time"></p> -->
 
-            <h3>credit</h3>
-            <ul>
-                <li><a href="https://typedither.vercel.app/">type dither</a></li>
-                <li>sam & julia mouse mansion</li>
-            </ul>
+        <h3>credit</h3>
+        <ul>
+            <li><a href="https://typedither.vercel.app/">type dither</a></li>
+            <li>sam & julia mouse mansion</li>
+        </ul>
     </div>
 
+    <div class="footer">
+        <img src="img/miffy.png"        alt="miffy">
+        <img src="img/sonny_cherry.PNG" alt="cherry sonny angel">
+        <img src="img/sonny_mouse.PNG"  alt="mouse sonny angel">
+    </div>
 
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
 <script src="app.js"></script>
 
