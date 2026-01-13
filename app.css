@@ -7,6 +7,8 @@
 @font-face {
     font-family: "Absans";
     src: url("fonts/absans-main/fonts/Absans-Regular.otf") format("opentype");
+    src: url("fonts/CLTApfelGrotezk/desktop/ApfelGrotezk-Regular.otf") format("opentype");
+    /* src: url("fonts/absans-main/fonts/Absans-Regular.otf") format("opentype"); */
 }
 
 theme-colors {
@@ -76,19 +78,23 @@ label {
     height: 100%;              /* needs a unit */
     width: 300px;
     padding: 20px;         /* centers horizontally & adds spacing */
+    top:0;
+    left:0;
 
     /* border-top: 3px solid #ff3333; */
     
-    display: block;            /* ensures stacking */
+    display: block;
 
-    box-sizing: border-box;    /* prevents border from breaking width */
+    box-sizing: border-box;   
 
     overflow-y: auto;
 
     background-image: url("img/textile_cats.jpeg");
-    background-size: cover;      /* fill screen */
-    background-position: center; /* center image */
+    background-size: cover;     
+    background-position: center; 
     background-repeat: no-repeat;
+
+    color:#ffcf37;
 }
 
 .menu img {

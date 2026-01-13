@@ -1,0 +1,7 @@
+{
+  "error": true,
+  "url": "https://www.collletttivo.it/api/fonts/926ded2f-0568-480e-831a-098eac228dd9",
+  "statusCode": 500,
+  "statusMessage": "Maximum call stack size exceeded",
+  "message": "Maximum call stack size exceeded"
+}
