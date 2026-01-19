@@ -45,7 +45,7 @@ async function loadPage(page) {
 
 // SELECT CONTENT USING MENU -----------------------------------------
 
-document.querySelectorAll(".menu button").forEach(button => {
+document.querySelectorAll(".menu-bar button").forEach(button => {
     button.addEventListener("click", async () => {
         const page = button.dataset.page;
 
@@ -72,18 +72,21 @@ fetch(url)
     const track = data.recenttracks.track[0];
     const artist = track.artist["#text"];
     const name = track.name;
+    const image = track.image.find(img => img.size === "extralarge")["#text"];
 
     // Detect if it’s currently playing
     const nowPlayingText = track["@attr"]?.nowplaying 
-        ? `listening to ${name} by ${artist}`
-        : `last listened to ${name} by ${artist}`;
+        ? `\u266B listening to ${name} by ${artist}`
+        : `\u266B last listened to ${name} by ${artist}`;
 
-    document.getElementById("now-playing").textContent = nowPlayingText;
+    document.getElementById("track").textContent = nowPlayingText;
+
+    document.getElementById("album-art").src = image || "fallback.jpg";
 })
 
 .catch(err => {
     console.error(err);
-    document.getElementById("now-playing").textContent = "listening to: [could not load track]";
+    document.getElementById("now-playing").textContent = "\u266B listening to: [could not load track]";
 });
 
 // DISPLAY CURRENT TIME ---------------------------------------------------------

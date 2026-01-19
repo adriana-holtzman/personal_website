@@ -35,6 +35,8 @@ body {
     font-family: "Absans";
     background-color: #ffe079b1;
     cursor: url("img/cheese.cur") 0 0, auto;
+
+    margin-top: 130px;
 }
 
 h1 {
@@ -69,19 +71,63 @@ label {
     cursor: url("img/cheese.cur") 0 0, auto;
 }
 
+.menu-bar {
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    background-image: url("img/textile_cats.jpeg");
+    background-position: center; 
+    background-repeat:repeat-x;
+
+    padding-inline: 10px;
+}
+
+.menu-bar button, 
+.menu-bar a {
+    font-size: 60px;    
+    margin: 0;
+    padding: 0;
+}
+
+.menu-bar img {
+    max-height: 80px;
+    max-width: 90%;
+    padding: 5px;
+    display: block;
+
+    border-radius: 30px;
+}
+
+.trim {
+    width: 100%;
+    height: 20px;
+    position:fixed;
+    top:100px;
+    background-image: url("img/lace_trim.png");
+    background-size:contain;     
+    background-position: center; 
+    background-repeat: repeat-x; 
+}
 
 /* a:hover {
     color: #de2572;
 } */
 
-.menu {
+.left-column {
     height: 100%;              /* needs a unit */
-    width: 300px;
-    padding: 20px;         /* centers horizontally & adds spacing */
+    width: 250px;
+    padding: 5px;         
     top:0;
     left:0;
-
-    /* border-top: 3px solid #ff3333; */
+    
+    margin-right: 10px;
     
     display: block;
 
@@ -89,30 +135,26 @@ label {
 
     overflow-y: auto;
 
-    background-image: url("img/textile_cats.jpeg");
-    background-size: cover;     
-    background-position: center; 
-    background-repeat: no-repeat;
-
-    color:#ffcf37;
+    min-width: 190px;
 }
 
-.menu img {
+.left-column img {
     max-width: 100%;
+    border-radius: 30px;
 }
 
-.menu_header {
-    padding-bottom: 30px;
-}
-
-.menu_content {
+.left-column-content {
     background-color: #ffe079b1;
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 15px;
 }
 
-.menu button {
+.left-column-content img {
+    border-radius: 20px;
+}
+
+.left-column button {
     background: #ffcf37;   
     border: none;
     border-radius: 20px;
@@ -122,7 +164,7 @@ label {
     font-size: 18px;
 }
 
-.menu button.active {
+.left-column button.active {
     color: #de2572;             /* active page highlight */
     font-weight: bold;           /* optional, makes it stand out */
 }
@@ -139,25 +181,21 @@ label {
     box-sizing: border-box;    /* prevents border from breaking width */
 }
 
-.trim {
-    width: 30px;
-    height: 100%;
-    background-image: url("img/lace_trim.png");
-    background-size:contain;     
-    background-position: center; 
-    background-repeat: repeat-y; 
-}
-
 .content {
-    height: 100%;              /* needs a unit */
-    width: 1000px;
-    padding: 20px;    
+    height: 77%;              /* needs a unit */
+    width: 900px;
+    min-width: 600px;
+    padding: 30px;    
+    margin:5px;
     
     display: block;            /* ensures stacking */
     box-sizing: border-box;    /* prevents border from breaking width */
 
     overflow-y: auto;
 
+    background-color: #ff4e9839;
+    /* background-color: #ffe079b1; */
+    border-radius: 30px;
 }
 
 .content img {
