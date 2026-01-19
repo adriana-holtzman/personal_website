@@ -154,7 +154,8 @@ label {
     border-radius: 20px;
 }
 
-.left-column button {
+.left-column button, 
+.left-column a {
     background: #ffcf37;   
     border: none;
     border-radius: 20px;
@@ -162,6 +163,8 @@ label {
     padding-inline: 15px;
     margin: 2px;
     font-size: 18px;
+
+    display:inline-block;
 }
 
 .left-column button.active {
@@ -184,8 +187,8 @@ label {
 
 .clock {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border: 8px solid #000;
     border-radius: 50%;
     background: white;
@@ -202,20 +205,20 @@ label {
 
 .hour {
     width: 6px;
-    height: 50px;
+    height: 37.5px;
     background: #000;
 }
 
 .minute {
     width: 4px;
-    height: 70px;
+    height: 52.5px;
     background: #000;
 }
 
 .second {
     width: 2px;
-    height: 85px;
-    background: red;
+    height: 63.75px;
+    background: #de2572;
 }
 
 /* center dot */
@@ -252,6 +255,68 @@ label {
 
 .content img {
     max-width: 100%;
+}
+
+/* ******************* RIGHT COLUMN ******************* */
+
+.right-column {
+    height: 80%; 
+    width: 250px;
+    padding: 5px;
+    
+    margin-left: 10px;
+    
+    display: block;
+
+    box-sizing: border-box;   
+
+    overflow-y: auto;
+
+    min-width: 190px;
+}
+
+.right-column img {
+    max-width: 100%;
+    border-radius: 30px;
+}
+
+.right-column-content {
+    background-color: #ffe079b1;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.right-column-content img {
+    border-radius: 20px;
+}
+
+.right-column button {
+    background: #ffcf37;   
+    border: none;
+    border-radius: 20px;
+    padding: 3px;
+    padding-inline: 15px;
+    margin: 2px;
+    font-size: 18px;
+}
+
+.update-log, .to-do{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.right-column button, 
+.right-column a {
+    background: #ffcf37;   
+    border: none;
+    border-radius: 20px;
+    padding: 3px;
+    padding-inline: 15px;
+    margin: 2px;
+    font-size: 18px;
+
+    display:inline-block;
 }
 
 /* ******************* BLOG ******************* */

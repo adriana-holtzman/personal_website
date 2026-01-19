@@ -121,7 +121,7 @@ function updateTime() {
     document.querySelector(".hour").style.transform =
         `translateX(-50%) rotate(${hourDeg}deg)`;
 
-    timeElement.textContent = `\u{1F552} current time ${timeString} (EST)`;
+    timeElement.textContent = `\u{1F552} ${timeString} (EST)`;
 }
 
 // Update every second
