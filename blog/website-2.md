@@ -4,7 +4,7 @@ some things i have changed since i last blogged about how i built this website:
 
 1. i changed the font (i started hating the other one, this one seems way more neutral to me). i am not sure where this font originally came from, i got it from a folder of unused fonts from my professional website. 
 
-2. i was annoyed that the menu on the left was so wide / unable to be sized down without making the home button much smaller, and the fabric and lace background made it too hard to see things, so i was deterred from adding more content within the left hand column space. so, i moved the menu bar to the top. it still needs some work, because i think the buttons look ridiculous as they are imo. i tried using them without the backgrounds so they all would match the "adriana" yellow blur text but they were not lining up nicely. 
+2. i was annoyed that the menu on the left was so wide / unable to be sized down without making the home button much smaller, and the fabric and lace background made it too hard to see things, so i was deterred from adding more content within the left hand column space. so, i moved the menu bar to the top. it still needs some work, because on mobile or any other small-ish device half of the menu options are entirely gone. i think the large text looks good even though it is not very functional.  
 
 3. i made everything more round. there is now a left column, a central content area, and a right column which are all rounded. this setup will also make it easier to build a mobile friendly setup in the future. everything has a bounding box, which is to me more organized. 
 
@@ -16,7 +16,12 @@ some things i have changed since i last blogged about how i built this website:
 
 7. more broadly, i determined that there is no need for this website to have random info like places and goals. i think just a blog of my thoughts, a cute home page, and then some creative ventures is all that this website should include. 
 
-here is what the website looks like now on my mac:
+here is what the website looks like now on browser windows of varying widths:
 
-![website as of jan 19 2026](img/website-2-mac.png)
+![desktop/mac: website as of jan 19 2026](img/website-2-mac.png)
+![tablet: website as of jan 19 2026](img/website-2-tablet.png)
+![mobile: website as of jan 19 2026](img/website-2-mobile.png)
+
+these screenshots are so pretty! it is capturing the arc browser shadows for some reason! :)
+
 
