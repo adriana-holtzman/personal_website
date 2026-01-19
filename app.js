@@ -3,6 +3,9 @@ const content = document.getElementById("content");
 // LOAD PAGE FUNCTION ------------------------------------------
 
 async function loadPage(page) {
+    console.log("Loading page:", page);
+    destroyGallery();
+
     const response = await fetch(`pages/${page}.html`);
     const html = await response.text();
     content.innerHTML = html;
@@ -10,53 +13,34 @@ async function loadPage(page) {
     // LOAD BLOG IF BLOG --------------------------------------------------
     if (page === "blog") loadBlogList();
 
-    // INIT MAP IF MAP ----------------------------------------------------
-    else if (page === "places") {
-        const mapDiv = document.getElementById("map");
-        if (mapDiv) {
-            const map = L.map('map').setView([20, 0], 2);
+    // LOAD GALLERY IF CONSUMED --------------------------------------------------
+    else if (page === "media_consumed") {
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-
-            const landmarks = [
-                { city: "New York", coords: [40.7128, -74.0060], description: ""},
-                { city: "London", coords: [51.5074, -0.1278], description: "" },
-                { city: "Boston", coords: [48.8566, 2.3522], description: "" },
-                { city: "Pittsburgh", coords: [35.6895, 139.6917], description: "" },
-            ];
-
-            const icon_image = L.icon({
-                iconUrl: 'img/cheese_cursor.png', // your icon image
-                iconSize: [32, 32],
-                iconAnchor: [16, 32], // tip of the marker
-                popupAnchor: [0, -32]
-            });
-
-            landmarks.forEach(l => {
-                L.marker(l.coords, { icon: icon_image })
-                 .addTo(map)
-                 .bindPopup(`<b>${l.city}</b><br>${l.description}`);
-            });
-        }
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            initGallery();
+        }, 0);
     }
+
 }  
 
 // SELECT CONTENT USING MENU -----------------------------------------
 
-document.querySelectorAll(".menu-bar button").forEach(button => {
-    button.addEventListener("click", async () => {
-        const page = button.dataset.page;
+const buttons = document.querySelectorAll(".menu-bar button");
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        // Remove 'active' from all buttons
+        buttons.forEach(b => b.classList.remove("active"));
 
-        const response = await fetch(`pages/${page}.html`);
-        const html = await response.text();
+        // Add 'active' to the clicked button
+        button.classList.add("active");
 
-        content.innerHTML = html;
-
-        loadPage(page);
-    });
+        // load new page
+        loadPage(button.dataset.page);
+    });    
 });
+
+
 
 
 // DISPLAY LASTFM -------------------------------------------------
@@ -66,28 +50,43 @@ const apiKey = "0d358011f511af9c7a3f5438631adfa3";
 
 const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
 
-fetch(url)
-.then(res => res.json())
-.then(data => {
-    const track = data.recenttracks.track[0];
-    const artist = track.artist["#text"];
-    const name = track.name;
-    const image = track.image.find(img => img.size === "extralarge")["#text"];
+let lastTrackId = null;
 
-    // Detect if it’s currently playing
-    const nowPlayingText = track["@attr"]?.nowplaying 
-        ? `\u266B listening to ${name} by ${artist}`
-        : `\u266B last listened to ${name} by ${artist}`;
+async function updateNowPlaying() {
 
-    document.getElementById("track").textContent = nowPlayingText;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        const track = data.recenttracks.track[0];
+        const artist = track.artist["#text"];
+        const name = track.name;
+        const image = track.image.find(img => img.size === "extralarge")["#text"];
 
-    document.getElementById("album-art").src = image || "fallback.jpg";
-})
+        // build a simple ID to detect change
+        const trackId = `${track.artist["#text"]}-${track.name}`;
 
-.catch(err => {
-    console.error(err);
-    document.getElementById("now-playing").textContent = "\u266B listening to: [could not load track]";
-});
+        if (trackId === lastTrackId) return; // no change
+
+        lastTrackId = trackId;
+
+        // Detect if it’s currently playing
+        const nowPlayingText = track["@attr"]?.nowplaying 
+            ? `\u266B listening to ${name} by ${artist}`
+            : `\u266B last listened to ${name} by ${artist}`;
+
+        document.getElementById("track").textContent = nowPlayingText;
+
+        document.getElementById("album-art").src = image || "fallback.jpg";
+    })
+
+    .catch(err => {
+        console.error(err);
+        document.getElementById("now-playing").textContent = "\u266B listening to: [could not load track]";
+    });
+}
+
+// poll every 10 seconds
+setInterval(updateNowPlaying, 10000);
 
 // DISPLAY CURRENT TIME ---------------------------------------------------------
 
@@ -102,27 +101,32 @@ function updateTime() {
         hour12: true // true = 12-hour format, false = 24-hour
     };
     
-    const timeString = new Date().toLocaleTimeString("en-US", options);
-    timeElement.textContent = `current time ${timeString} (EST)`;
+    const now = new Date();
+    const timeString = now.toLocaleTimeString("en-US", options);
+
+    const seconds = now.getSeconds("en-US", options);
+    const minutes = now.getMinutes("en-US", options);
+    const hours = now.getHours("en-US", options) % 12;
+
+    const secondDeg = seconds * 6; // 360 / 60
+    const minuteDeg = minutes * 6 + seconds * 0.1;
+    const hourDeg = hours * 30 + minutes * 0.5;
+
+    document.querySelector(".second").style.transform =
+        `translateX(-50%) rotate(${secondDeg}deg)`;
+
+    document.querySelector(".minute").style.transform =
+        `translateX(-50%) rotate(${minuteDeg}deg)`;
+
+    document.querySelector(".hour").style.transform =
+        `translateX(-50%) rotate(${hourDeg}deg)`;
+
+    timeElement.textContent = `\u{1F552} current time ${timeString} (EST)`;
 }
 
 // Update every second
 setInterval(updateTime, 1000);
 updateTime(); // initial call
-
-// TRACK CURRENT PAGE --------------------------------------------------
-
-const buttons = document.querySelectorAll(".menu button");
-
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        // Remove 'active' from all buttons
-        buttons.forEach(b => b.classList.remove("active"));
-
-        // Add 'active' to the clicked button
-        btn.classList.add("active");
-    });
-});
 
 
 // CURSOR FOLLOWER ---------------------------------------------------------
@@ -210,7 +214,65 @@ async function loadPost(filename) {
       <div class="signature">♡ adriana</div>
     `;
 }
-  
+
+// LOAD MEDIA GALLERY ---------------------------------------------------------
+
+const imageGroups = {
+    visual: [
+        "img/visual-art-consumed/monet.PNG",
+        "img/visual-art-consumed/roulin.PNG",
+        "img/visual-art-consumed/sunday-in-the-park.PNG",
+        "img/visual-art-consumed/picasso.PNG",
+        "img/visual-art-consumed/netherlands.PNG",
+        "img/visual-art-consumed/woman-newspaper.PNG",
+        "img/visual-art-consumed/spanish-woman.PNG",
+        "img/visual-art-consumed/mary-lamb.PNG",
+        "img/visual-art-consumed/peabody-essex.PNG",
+        "img/visual-art-consumed/boy-on-horned-animal.PNG",
+        "img/visual-art-consumed/IMG_7989.PNG",
+        "img/visual-art-consumed/IMG_7987.PNG",
+        "img/visual-art-consumed/IMG_7986.PNG"
+    ]
+    // Add more topics and images here as needed
+};
+
+async function initGallery() {
+    console.log("initGallery ran");
+
+    const gallery = document.getElementById("gallery");
+    console.log("gallery:", gallery);
+
+    if (!gallery) return;
+
+    // Collect all images from all topics
+    const allImages = [];
+    for (const topic in imageGroups) {
+        allImages.push(...imageGroups[topic]);
+    }
+
+    // Create a card for each image
+    allImages.forEach(src => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.loading = "lazy";
+
+        card.appendChild(img);
+        gallery.appendChild(card);
+    });
+}
+
+function destroyGallery() {
+    console.log("destroyGallery ran");
+    // Clear gallery content when switching pages
+    const gallery = document.getElementById("gallery");
+    if (gallery) {
+        gallery.innerHTML = "";
+    }
+}
+
   
 
 

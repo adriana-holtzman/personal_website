@@ -71,6 +71,8 @@ label {
     cursor: url("img/cheese.cur") 0 0, auto;
 }
 
+/* ******************* TOP MENU BAR ******************* */
+
 .menu-bar {
     top:0;
     left:0;
@@ -116,12 +118,10 @@ label {
     background-repeat: repeat-x; 
 }
 
-/* a:hover {
-    color: #de2572;
-} */
+/* ******************* LEFT COLUMN ******************* */
 
 .left-column {
-    height: 100%;              /* needs a unit */
+    height: 80%; 
     width: 250px;
     padding: 5px;         
     top:0;
@@ -169,7 +169,6 @@ label {
     font-weight: bold;           /* optional, makes it stand out */
 }
 
-
 .footer {
     margin-top: 20px;
 
@@ -180,6 +179,59 @@ label {
     display: block;            /* ensures stacking */
     box-sizing: border-box;    /* prevents border from breaking width */
 }
+
+/* ******************* CLOCK ******************* */
+
+.clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 8px solid #000;
+    border-radius: 50%;
+    background: white;
+}
+
+/* clock hands */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.hour {
+    width: 6px;
+    height: 50px;
+    background: #000;
+}
+
+.minute {
+    width: 4px;
+    height: 70px;
+    background: #000;
+}
+
+.second {
+    width: 2px;
+    height: 85px;
+    background: red;
+}
+
+/* center dot */
+.center {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ******************* CONTENT ******************* */
+
 
 .content {
     height: 77%;              /* needs a unit */
@@ -261,7 +313,8 @@ label {
     color: #de2572;
 }
 
-/* CHART FOR MEDIA CONSUMPTION */
+/* ******************* MEDIA CONSUMED CHART ******************* */
+
 .info-chart {
   width: 100%;
   border-collapse: collapse;
@@ -291,7 +344,38 @@ label {
     margin: 0;
 }
 
-/* MAP */
+/* ******************* MEDIA CONSUMPTION GALLERY ******************* */
+
+.masonry {
+    column-count: 4;
+    column-gap: 10px;
+    padding: 10px;
+}
+
+@media (max-width: 1200px) {
+    .masonry { column-count: 3; }
+}
+@media (max-width: 800px) {
+    .masonry { column-count: 2; }
+}
+@media (max-width: 500px) {
+    .masonry { column-count: 1; }
+}
+
+.card {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+
+/* ******************* MAP FROM LEAFLET ******************* */
 #map {
     height: 500px;           
     width: 100%;
@@ -310,7 +394,7 @@ label {
     background: #feffc5;
 }
 
-/* CURSOR FOLLOWER (MOUSE) */
+/* ******************* CURSOR FOLLOWER (MOUSE) ******************* */
 #cursor-follower {
     position: fixed;
     top: 0;
@@ -319,9 +403,9 @@ label {
     height: auto;
     pointer-events: none; /* VERY IMPORTANT */
     z-index: 9999;
-  }
+}
   
-/* HIGHLIGHTED SELECTION COLOR */
+/* ******************* HIGHLIGHTED SELECTION COLOR ******************* */
 ::selection {
     background: #de25726b;
     /* color: #de2572;     */
@@ -331,3 +415,4 @@ label {
     background: #de25726b;
     /* color: #de2572;     */
 }
+
