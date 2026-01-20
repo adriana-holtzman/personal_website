@@ -103,11 +103,16 @@ label {
 
 .menu-bar button:hover, 
 .menu-bar a:hover {
-    text-decoration: wavy;
+    text-decoration: underline wavy #000fb0;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 4px; 
 }
 
 .menu-bar button.active {
     color: #ffcf37;     
+    text-decoration: underline wavy #000fb0;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 4px; 
 }
 
 .menu-bar img {
@@ -128,6 +133,8 @@ label {
     background-size:contain;     
     background-position: center; 
     background-repeat: repeat-x; 
+
+    filter: drop-shadow(2px 2px 5px #000fb059);
 }
 
 /* ******************* LEFT COLUMN ******************* */

@@ -24,4 +24,8 @@ here is what the website looks like now on browser windows of varying widths:
 
 these screenshots are so pretty! it is capturing the arc browser shadows for some reason! :)
 
+i have already had to edit this blog post once because i keep changing the website today so there are more updates than i can include here. i decided i love drop shadows and added one to the trim, and made an html page for the homepage so it doesn't have to reload, and gave the menu wiggly underlines on hover/selection. i need to stop looking at this website...
+
+ttyl!
+
 
