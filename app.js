@@ -94,7 +94,7 @@ const timeElement = document.getElementById("time");
 
 function updateTime() {
     const options = {
-        timeZone: "America/New_York", // IANA naming
+        timeZone: "Europe/Zurich", // IANA naming
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
@@ -121,7 +121,7 @@ function updateTime() {
     document.querySelector(".hour").style.transform =
         `translateX(-50%) rotate(${hourDeg}deg)`;
 
-    timeElement.textContent = `\u{1F552} ${timeString} (EST)`;
+    timeElement.textContent = `\u{1F552} ${timeString} (Swiss)`;
 }
 
 // Update every second
